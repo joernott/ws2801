@@ -7,7 +7,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var cfgFile string
 var numLEDs int
 var position int
 var first int
@@ -31,8 +30,7 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c", ".ws2801tool", "config file (default is $HOME/.ws2801tool.yaml)")
-	rootCmd.PersistentFlags().IntVarP(&numLEDs, "number_of_leds", "n", 0, "number of LEDs")
+	rootCmd.PersistentFlags().IntVarP(&numLEDs, "number_of_leds", "n", 0, "Number of LEDs")
 	rootCmd.PersistentFlags().IntVarP(&position, "position", "p", 0, "Position of the pixel.")
 	rootCmd.PersistentFlags().IntVarP(&first, "first", "f", 0, "Position of the first pixel when defining a range.")
 	rootCmd.PersistentFlags().IntVarP(&last, "last", "l", 0, "Position of the last pixel when defining a range.")
