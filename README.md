@@ -1,4 +1,4 @@
-[![GoDoc](https://godoc.org/github.com/joernott/ws2801?status.svg)](https://godoc.org/github.com/joernott/ws2801) [![license](https://img.shields.io/badge/license-BSD%203--clause-blue.svg)](https://github.com/joernott/ws2801/LICENSE) [![cover.run](https://cover.run/go/github.com/joernott/ws2801.svg?style=flat&tag=golang-1.13)](https://cover.run/go?tag=golang-1.13&repo=github.com%2Fjoernott%2Fws2801)
+[![GoDoc](https://godoc.org/github.com/joernott/ws2801?status.svg)](https://godoc.org/github.com/joernott/ws2801) [![license](https://img.shields.io/badge/license-BSD%203--clause-blue.svg)](https://github.com/joernott/ws2801/LICENSE)
 # ws2801 - a library to address ws2801 led strips connected via SPI
 
 This package controls ws2801 LED strips connected via SPI.
@@ -20,9 +20,12 @@ Contributions / Pull requests are welcome.
 ### Create connection
 The LED strip connection is created by using the NewPixels function.
 ```
-	p,err := ws2801.NewPixels(
-		32						// number of pixels in the strip
-	)
+	p,err := ws2801.NewPixels(32) //number of pixels in the strip
+	if err !=nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	defer p.Close()
 ```
 ### Set a pixel or a range of pixels to a specific color
 ```
